@@ -285,6 +285,38 @@ span {
     width: 80%;
 }
 
+.skills-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, auto));
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.skills-card {
+  padding: 8px;
+  width: 150px;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 0.5rem;
+  border-bottom: 2px solid var(--main-color);
+  box-shadow: 0 2px 7px rgb(14 55 54 / 15%);
+}
+
+.skills-card:hover {
+  background-color: #02225a;
+  color: #fff;
+  cursor: pointer;
+}
+
+#skills img{
+  width: 60%;
+  aspect-ratio: 4/4;
+}
+
 
 .projects-container {
     display: grid;
@@ -374,42 +406,7 @@ span {
   /* .project-card:hover  {
     color: #8b8a8f;
   } */
-
-.skills-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, auto));
-  justify-content: center;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-
-.skills-card {
-  padding: 8px;
-  width: 150px;
-  margin-top: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  border-radius: 0.5rem;
-  border-bottom: 2px solid var(--main-color);
-  box-shadow: 0 2px 7px rgb(14 55 54 / 15%);
-}
-
-.skills-card:hover {
-  background-color: #02225a;
-  color: #fff;
-  cursor: pointer;
-}
-
-#skills img{
-  width: 60%;
-  aspect-ratio: 4/4;
-}
-
-
-
-
+  
 .react-activity-calendar {
     text-align: center;
     width: 80%;
