@@ -31,10 +31,10 @@ document.getElementById('resume-link-1').addEventListener("click", () => {
   window.open("https://drive.google.com/file/d/1-UyBnqRV-GUeVFp4tf0PgL9P5QiTL7l0/view?usp=share_link", "_blank");
 });
 
-// document.getElementById('resume-link-2').addEventListener("click", () => {
-//   // console.log("OPENinig.....");
-//   window.open("https://drive.google.com/file/d/1-UyBnqRV-GUeVFp4tf0PgL9P5QiTL7l0/view?usp=share_link", "_blank");
-// });
+document.getElementById('resume-link-2').addEventListener("click", () => {
+  // console.log("OPENinig.....");
+  window.open("https://drive.google.com/file/d/1-UyBnqRV-GUeVFp4tf0PgL9P5QiTL7l0/view?usp=share_link", "_blank");
+});
 
 // document.getElementById('resume-link-3').addEventListener("click", () => {
 //   console.log("OPENinig.....");
