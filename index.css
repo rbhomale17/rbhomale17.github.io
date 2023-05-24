@@ -9,6 +9,10 @@
     font-family: "Poppins", sans-serif;
     box-sizing: border-box;
 }
+body{
+    box-sizing: border-box;
+    width: 100%;
+}
 a{
     text-decoration: none;
     color: var(--text-color);
@@ -422,8 +426,8 @@ span {
 
 .react-activity-calendar {
     text-align: center;
-    width: 80%;
-    margin: auto;
+    width: 100%;
+    /* margin: auto; */
 }
 
 .calendar {
@@ -600,6 +604,14 @@ span {
         --medium-font: 1.1rem;
     }
 
+    .footer-social {
+        margin-left: 55px;
+    }
+    *{
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+    }
     header {
         position: fixed;
         width: 100%;
@@ -639,21 +651,38 @@ span {
 
 }
 
-@media screen and (min-width: 300px) and (max-width: 499px) {
+@media screen and (min-width: 350px) and (max-width: 499px) {
     .react-activity-calendar {
-        text-align: center;
         width: 100%;
-        margin: auto;
+        margin: 0px;
+        text-align: center;
+        
+        
     }
 
     .calendar div {
-        width: 100%;
+        width: 90%;
+        margin: auto;
         display: block;
     }
 
     #git-stat>div>img {
-        width: 90%;
+        width: 80%;
         background-color: black;
+    }
+    *{
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+    }
+    body{
+        width: auto;
+        box-sizing: border-box;
+        margin: 0px;
+        padding: 0px;
+    }
+    .footer-social {
+        margin-left: 0px;
     }
 
 }
