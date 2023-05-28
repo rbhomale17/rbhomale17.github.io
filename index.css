@@ -57,6 +57,7 @@ body {
 .heading span {
     font-size: var(--p-font);
     color: rgb(2, 166, 70);
+    /* font-weight: 300; */
 }
 
 header {
@@ -88,7 +89,7 @@ header.shadow {
 .logo span {
     font-size: 1.61rem;
     font-weight: 600;
-    color: crimson;
+    color: rgb(230, 23, 23);
 }
 
 .navbar {
@@ -136,9 +137,11 @@ header.shadow {
 } */
 
 .home-img1 img {
-    width: 90%;
+    width: 80%;
     /* border: 1px solid rgb(0, 0, 0); */
-    border-radius: 15px;
+    border-radius: 0.5rem;
+
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 }
 
 .home-text span {
@@ -213,8 +216,9 @@ header.shadow {
 }
 
 .home-img-main img {
-    width: 81.8%;
-    border-radius: 0.5rem;
+    width: 85%;
+    height: auto;
+    border-radius: 1rem;
     box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
 }
 
