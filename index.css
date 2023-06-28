@@ -21,7 +21,7 @@ a{
     --main-color: #033a80;
     --bg-color: #E9F9EF;
     --text-color: #0f0c27;
-    --hover: hsl(260, 100%, 51%);
+    --hover: hsl(217, 83%, 74%);
     --big-font: 3.2rem;
     --medium-font: 1.8rem;
     --p-font: 0.941rem;
@@ -89,7 +89,7 @@ header.shadow {
 .logo span {
     font-size: 1.61rem;
     font-weight: 600;
-    color: rgb(230, 23, 23);
+    color: rgb(232, 47, 118);
 }
 
 .navbar {
@@ -194,18 +194,21 @@ header.shadow {
 
 .resume-button {
     display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
     background: var(--main-color);
-    color: #fff;
+    color: #120101;
     padding: 0.5rem 1.3rem;
     border-radius: 0.5rem;
     border: none;
     cursor: pointer;
-    background: #2768d9;
+    background: #16de4c;
     letter-spacing: 1px;
 }
 
 .resume-button:hover {
     background: var(--hover);
+    color: #fff;
 }
 
 .about-container {
@@ -348,7 +351,7 @@ span {
     align-items: center;
     text-align: center;
     border-radius: 1rem;
-    background-color: #fff;
+    background-color: #b6cce8;
     border-bottom: 5px solid rgb(30, 215, 120);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     /* border: 1px solid black; */
@@ -359,8 +362,14 @@ span {
 /* .project-card:hover{
     background-color:#c9e6f8 ;
   } */
-.project-card img {
+.project-card img, iframe {
     width: 100%;
+    /* height: 300px; */
+    border-radius: 0.5rem;
+}
+.project-card iframe {
+    width: 100%;
+    height: 500px;
     border-radius: 0.5rem;
 }
 
@@ -398,7 +407,7 @@ span {
     align-items: center;
     text-align: center;
     border-radius: 0.5rem;
-    border: 1px solid #17e064;
+    border: 2px solid #e7ece9;
     ;
 
 }
@@ -652,6 +661,19 @@ span {
     .contact-button {
         margin-left: 25%;
     }
+
+    /* .tech-card {
+        padding: 4px;
+        width: 50px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        border-radius: 0.5rem;
+        border: 2px solid #e7ece9;display: grid;
+        grid-template-columns: repeat(3,1fr);
+        gap:1rem;
+    } */
 
 }
 
