@@ -311,16 +311,17 @@ span {
 
 .skills-card {
     padding: 8px;
-    width: 150px;
+    width: 120px;
     margin-top: 16px;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     border-radius: 0.5rem;
-    background-color: #bbf4e0;
+    background-color: #fff;
     border-bottom: 5px solid rgb(30, 215, 120);
     box-shadow: 0 2px 7px rgb(14 55 54 / 15%);
+    border-radius: 1000px;
 }
 
 .skills-card:hover {
@@ -451,7 +452,7 @@ span {
 
 #git-stat>div>img {
     width: 55%;
-    background-color: black;
+    /* background-color: black; */
 }
 
 .footer {
@@ -607,7 +608,7 @@ span {
 
     #git-stat>div>img {
         width: 90%;
-        background-color: black;
+        /* background-color: black; */
     }
 }
 
@@ -694,7 +695,7 @@ span {
 
     #git-stat>div>img {
         width: 80%;
-        background-color: black;
+        /* background-color: black; */
     }
     *{
         box-sizing: border-box;
