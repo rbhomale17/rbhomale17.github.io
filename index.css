@@ -324,7 +324,7 @@ span {
     background-color: #fff;
     border-bottom: 5px solid rgb(30, 215, 120);
     box-shadow: 0 2px 7px rgb(14 55 54 / 15%);
-    border-radius: 1000px;
+    /* border-radius: 700px; */
 }
 
 .skills-card:hover {
