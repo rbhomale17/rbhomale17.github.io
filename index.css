@@ -59,7 +59,7 @@ body {
 
 .heading span {
     font-size: var(--p-font);
-    color: rgb(2, 166, 70);
+    color: rgb(42, 116, 196);
     /* font-weight: 300; */
 }
 
@@ -413,7 +413,7 @@ iframe {
     align-items: center;
     text-align: center;
     border-radius: 0.5rem;
-    border: 2px solid #e7ece9;
+    border: 2px solid #1fc662;
     ;
 
 }
@@ -822,8 +822,27 @@ iframe {
 
 /* cetificates section styling */
 
+.carousel {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+  }
+  
+  /* .carousel .card {
+    width: 100%; 
+    flex-shrink: 0; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+  } */
+
+  
 .carousel .card {
+    width: 100%;
     background: #222;
+    /* background: #f8973c; */
+    /* background-image:linear-gradient(to bottom, #e55454, #5369e4) */
     border-radius: 6px;
     padding: 5px 5px;
     text-align: center;
@@ -834,14 +853,15 @@ iframe {
 
 .carousel .card .box {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content:space-between;
     transition: all 0.3s ease;
 }
 
 .carousel .card:hover .box {
-    transform: scale(1.05);
+    transform: scale(0.98);
 }
 
 .carousel .card .text {
@@ -850,11 +870,19 @@ iframe {
     margin: 10px 0 7px 0;
 }
 
-.carousel .card img {
+.carousel .card>img {
     height: 240px;
     width: 240px;
     object-fit: cover;
-    transition: all 0.3s ease;
+    /* transition: all 0.3s ease; */
+}
+
+.carousel .card .project-card {
+    /* margin: 20px; */
+    height: 700px;
+    width: 100%;
+    /* object-fit: cover; */
+    /* transition: all 0.3s ease; */
 }
 
 .owl-dots {
