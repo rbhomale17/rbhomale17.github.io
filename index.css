@@ -98,6 +98,7 @@ header {
 }
 
 header.shadow {
+    /* width: 100%; */
     box-shadow: 0 0 4px rgb(14 55 54 / 15%);
 }
 
@@ -657,6 +658,11 @@ iframe {
         flex-direction: column;
         align-items: center;
     }
+
+    .react-activity-calendar img {
+        width: 100%;
+    }
+
 }
 
 
@@ -733,6 +739,7 @@ iframe {
     font-size: 15px;
     font-weight: bold;
 }
+
 .work__container {
     row-gap: 2rem;
 }
@@ -752,22 +759,24 @@ iframe {
     width: 100%;
 }
 
-.calendar {
+/* .calendar {
     background-color: #fff;
     color: #000;
     padding: 10px;
-}
+} */
 
 #git-stat>div>img {
     width: 55%;
 }
 
 .footer {
+    width: 100%;
     display: grid;
     place-items: center;
     padding: 20px;
     color: #000;
     margin-bottom: 110px;
+    /* align-content: center; */
 }
 
 .footer h2 {
@@ -781,7 +790,7 @@ iframe {
     font-size: 25px;
     display: flex;
     flex-direction: column;
-    margin-left: 130px;
+    /* margin-left: 130px; */
     text-align: center;
     line-height: 40px;
     height: 40px;
@@ -811,6 +820,45 @@ iframe {
 .footer-bottom a {
     color: #22cf91;
 }
+
+
+/* cetificates section styling */
+.carousel {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px 20px;
+}
+
+.carousel .card .box img {
+    width: 95%;
+}
+
+.owl-dots {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.owl-dot {
+    height: 13px;
+    width: 13px;
+    margin: 0 5px;
+    outline: none !important;
+    border-radius: 50%;
+    border: 2px solid rgb(68, 237, 52) !important;
+    transition: all 0.3s ease;
+}
+
+.owl-dot.active {
+    width: 35px;
+    border-radius: 14px;
+}
+
+.owl-dot.active,
+.owl-dot:hover {
+    background: rgb(68, 237, 52) !important;
+}
+
+
 
 /* For Mobile */
 @media (max-width: 991px) {
@@ -1073,6 +1121,8 @@ iframe {
     .skills-container {
         grid-template-columns: 1fr;
     }
+
+
 }
 
 @media screen and (min-width: 350px) and (max-width: 499px) {
@@ -1080,14 +1130,15 @@ iframe {
         width: 100%;
         margin: 0px;
         text-align: center;
-
-
     }
 
-    .calendar div {
-        width: 90%;
-        margin: auto;
-        display: block;
+    .react-activity-calendar img {
+        width: 100%;
+    }
+
+    .carousel {
+        display: flex;
+        flex-direction: column;
     }
 
     #git-stat>div>img {
@@ -1118,39 +1169,9 @@ iframe {
 
 }
 
-
-/* cetificates section styling */
-.carousel {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px 20px;
-}
-
-.carousel .card .box img {
-    width: 95%;
-}
-
-.owl-dots {
-    text-align: center;
-    margin-top: 20px;
-}
-
-.owl-dot {
-    height: 13px;
-    width: 13px;
-    margin: 0 5px;
-    outline: none !important;
-    border-radius: 50%;
-    border: 2px solid rgb(68, 237, 52) !important;
-    transition: all 0.3s ease;
-}
-
-.owl-dot.active {
-    width: 35px;
-    border-radius: 14px;
-}
-
-.owl-dot.active,
-.owl-dot:hover {
-    background: rgb(68, 237, 52) !important;
+@media screen and (max-width: 350px) {
+    .carousel {
+        display: flex;
+        flex-direction: column;
+    }
 }
