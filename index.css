@@ -21,7 +21,8 @@ a {
 }
 
 :root {
-    --main-color: #1e40af;
+    /* --main-color: #1e40af; */
+    --main-color: #6586f5;
     --main-color-dark: #1e3a8a;
     --bg-color: #f8fafc;
     --bg-color-secondary: #ffffff;
@@ -206,6 +207,18 @@ header.shadow {
 .navbar {
     display: flex;
     gap: 0.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.navbar li {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
 .navbar a {
@@ -216,11 +229,28 @@ header.shadow {
     border-radius: var(--border-radius-small);
     transition: all 0.3s ease;
     position: relative;
+    text-decoration: none;
+    display: block;
 }
 
 .navbar a:hover {
     color: var(--main-color);
     background: rgba(30, 64, 175, 0.05);
+}
+
+/* Resume link styling in navbar */
+.navbar .resume {
+    background: var(--main-color);
+    color: #fff !important;
+    border-radius: var(--border-radius-small);
+    transition: all 0.3s ease;
+}
+
+.navbar .resume:hover {
+    background: var(--main-color-dark);
+    color: #fff !important;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
 }
 
 #menu-icon {
@@ -229,6 +259,25 @@ header.shadow {
     z-index: 10001;
     display: none;
     color: var(--text-color);
+    padding: 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#menu-icon:hover {
+    background: rgba(101, 134, 245, 0.1);
+    color: var(--main-color);
+}
+
+#menu-icon:active {
+    transform: scale(0.95);
 }
 
 #darkmode {
@@ -1960,6 +2009,11 @@ html {
         --big-font: 2.7rem;
         --medium-font: 1.4rem;
     }
+    
+    /* Ensure menu icon is visible in tablet view */
+    #menu-icon {
+        display: block !important;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1970,50 +2024,81 @@ html {
 
     header {
         padding: 11px 4%;
-        /* width: 100%;
-    margin-right: 30px; */
+        position: relative;
     }
 
     #menu-icon {
-        display: initial;
+        display: block !important;
         color: var(--text-color);
+        position: relative;
+        z-index: 10002;
     }
 
     header .navbar {
         position: absolute;
-        top: -500px;
+        top: -100vh;
         left: 0;
         right: 0;
         display: flex;
         flex-direction: column;
-        background: var(--bg-color);
+        background: var(--bg-color-secondary);
         box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
-        transition: 0.2s ease;
+        transition: 0.3s ease-in-out;
         text-align: center;
+        opacity: 0;
+        visibility: hidden;
+        border-radius: 0 0 8px 8px;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 10000;
     }
 
     .navbar.active {
         top: 100%;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .navbar li {
+        margin: 0;
+        padding: 0;
+        width: 100%;
     }
 
     .navbar a {
-        padding: 1.5rem;
+        padding: 1.2rem;
         display: block;
-        background: var(--bg-color);
+        background: var(--bg-color-secondary);
+        border-bottom: 1px solid var(--border-color-light);
+        transition: all 0.3s ease;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+        margin: 0;
     }
     
-    /* Hide resume button in header on mobile */
-    .navbar .resume {
-        display: none !important;
+    .navbar a:last-child {
+        border-bottom: none;
     }
     
-    /* Show resume button in mobile menu */
-    .navbar.active .resume {
+    .navbar a:hover {
+        background: rgba(101, 134, 245, 0.05);
+        color: var(--main-color);
+    }
+    
+    /* Ensure all menu items are visible in mobile menu */
+    .navbar.active li {
         display: block !important;
+        width: 100%;
     }
     
-    /* Ensure resume button is visible in mobile menu */
-    .navbar.active a.resume {
+    .navbar.active a {
+        display: block !important;
+        width: 100%;
+    }
+    
+    /* Resume button styling in mobile menu */
+    .navbar .resume {
         display: block !important;
         width: 100%;
         text-align: center;
@@ -2076,6 +2161,137 @@ html {
     }
 }
 
+/* Additional mobile optimizations for very small screens */
+@media (max-width: 480px) {
+    header {
+        padding: 8px 3%;
+    }
+    
+    #menu-icon {
+        font-size: 20px;
+        padding: 6px;
+    }
+    
+    .navbar a {
+        padding: 1rem;
+        font-size: 0.9rem;
+    }
+    
+    header .navbar {
+        max-height: 70vh;
+    }
+    
+    /* Resume button styling for very small screens */
+    .navbar .resume {
+        background: var(--main-color);
+        color: #fff !important;
+        margin: 0.5rem 0;
+        border-radius: var(--border-radius-small);
+    }
+    
+    .navbar .resume:hover {
+        background: var(--main-color-dark);
+        color: #fff !important;
+    }
+}
+
+/* Medium screen optimizations */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .navbar {
+        gap: 0.3rem;
+    }
+    
+    .navbar a {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+    
+    /* Ensure menu icon is visible in medium screens */
+    #menu-icon {
+        display: block !important;
+    }
+    
+    /* Ensure mobile menu behavior in medium screens */
+    header .navbar {
+        position: absolute;
+        top: -100vh;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg-color-secondary);
+        box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
+        transition: 0.3s ease-in-out;
+        text-align: center;
+        opacity: 0;
+        visibility: hidden;
+        border-radius: 0 0 8px 8px;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 10000;
+    }
+
+    .navbar.active {
+        top: 100%;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .navbar li {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+    }
+
+    .navbar a {
+        padding: 1.2rem;
+        display: block;
+        background: var(--bg-color-secondary);
+        border-bottom: 1px solid var(--border-color-light);
+        transition: all 0.3s ease;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+    
+    .navbar a:last-child {
+        border-bottom: none;
+    }
+    
+    .navbar a:hover {
+        background: rgba(101, 134, 245, 0.05);
+        color: var(--main-color);
+    }
+    
+    /* Ensure all menu items are visible in mobile menu */
+    .navbar.active li {
+        display: block !important;
+        width: 100%;
+    }
+    
+    .navbar.active a {
+        display: block !important;
+        width: 100%;
+    }
+    
+    /* Resume button styling in mobile menu */
+    .navbar .resume {
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        background: var(--main-color);
+        color: #fff !important;
+        margin: 0.5rem 0;
+        border-radius: var(--border-radius-small);
+    }
+    
+    .navbar .resume:hover {
+        background: var(--main-color-dark);
+        color: #fff !important;
+    }
+}
+
 @media (max-width: 850px) {
     :root {
         --big-font: 2.4rem;
@@ -2084,50 +2300,81 @@ html {
 
     header {
         padding: 11px 4%;
-        /* width: 100%;
-    margin-right: 30px; */
+        position: relative;
     }
 
     #menu-icon {
-        display: initial;
+        display: block !important;
         color: var(--text-color);
+        position: relative;
+        z-index: 10002;
     }
 
     header .navbar {
         position: absolute;
-        top: -500px;
+        top: -100vh;
         left: 0;
         right: 0;
         display: flex;
         flex-direction: column;
-        background: var(--bg-color);
+        background: var(--bg-color-secondary);
         box-shadow: 0 4px 4px rgb(0 0 0 / 10%);
-        transition: 0.2s ease;
+        transition: 0.3s ease-in-out;
         text-align: center;
+        opacity: 0;
+        visibility: hidden;
+        border-radius: 0 0 8px 8px;
+        max-height: 80vh;
+        overflow-y: auto;
+        z-index: 10000;
     }
 
     .navbar.active {
         top: 100%;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .navbar li {
+        margin: 0;
+        padding: 0;
+        width: 100%;
     }
 
     .navbar a {
-        padding: 1.5rem;
+        padding: 1.2rem;
         display: block;
-        background: var(--bg-color);
+        background: var(--bg-color-secondary);
+        border-bottom: 1px solid var(--border-color-light);
+        transition: all 0.3s ease;
+        font-weight: 500;
+        width: 100%;
+        text-align: center;
+        margin: 0;
     }
     
-    /* Hide resume button in header on mobile */
-    .navbar .resume {
-        display: none !important;
+    .navbar a:last-child {
+        border-bottom: none;
     }
     
-    /* Show resume button in mobile menu */
-    .navbar.active .resume {
+    .navbar a:hover {
+        background: rgba(101, 134, 245, 0.05);
+        color: var(--main-color);
+    }
+    
+    /* Ensure all menu items are visible in mobile menu */
+    .navbar.active li {
         display: block !important;
+        width: 100%;
     }
     
-    /* Ensure resume button is visible in mobile menu */
-    .navbar.active a.resume {
+    .navbar.active a {
+        display: block !important;
+        width: 100%;
+    }
+    
+    /* Resume button styling in mobile menu */
+    .navbar .resume {
         display: block !important;
         width: 100%;
         text-align: center;
@@ -4209,3 +4456,709 @@ img.lazy {
 }
 
 /* ===== COMPREHENSIVE RESPONSIVE DESIGN ===== */
+
+/* Professional Background Section Styles */
+.professional-background {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--border-color);
+}
+
+.professional-background h3 {
+  color: var(--text-color-dark);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.professional-background p {
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+.professional-background strong {
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+.summary-highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--border-color);
+}
+
+.highlight-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem;
+  background: var(--bg-color);
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.highlight-item:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+  border-color: var(--main-color);
+}
+
+.highlight-item i {
+  font-size: 2rem;
+  color: var(--main-color);
+  flex-shrink: 0;
+}
+
+.highlight-item span {
+  font-size: 1rem;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.highlight-item strong {
+  color: var(--main-color);
+  font-weight: 600;
+}
+
+/* Responsive Design for Professional Background */
+@media screen and (max-width: 768px) {
+  .professional-background h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  
+  .professional-background p {
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+  
+  .summary-highlights {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .highlight-item {
+    padding: 1.2rem;
+  }
+  
+  .highlight-item i {
+    font-size: 1.8rem;
+  }
+  
+  .highlight-item span {
+    font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .professional-background h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .professional-background p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+  }
+  
+  .highlight-item {
+    padding: 1rem;
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
+  }
+  
+  .highlight-item i {
+    font-size: 1.6rem;
+  }
+  
+  .highlight-item span {
+    font-size: 0.9rem;
+  }
+}
+
+/* Work Experience Section Styles */
+.work-experience {
+  background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-color-secondary) 100%);
+  border-radius: var(--border-radius);
+  margin: 2rem 0;
+  box-shadow: var(--shadow-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.work-experience::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="%23f0f0f0" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+  opacity: 0.3;
+  z-index: 0;
+}
+
+.experience-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.experience-item {
+  background: linear-gradient(145deg, var(--bg-color-secondary) 0%, var(--bg-color) 100%);
+  border-radius: 20px;
+  padding: 3rem;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+.experience-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--main-color);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.experience-item:hover::before {
+  transform: scaleY(1);
+}
+
+.experience-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--main-color);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+  gap: 2rem;
+  position: relative;
+}
+
+.experience-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--main-color), var(--accent-color));
+  border-radius: 1px;
+}
+
+.duration-info {
+  flex-shrink: 0;
+  min-width: 200px;
+  text-align: right;
+}
+
+.duration-info .duration {
+  color: var(--text-color-light);
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: linear-gradient(135deg, var(--main-color), var(--accent-color));
+  color: white;
+  padding: 0.5rem 1.2rem;
+  border-radius: 25px;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.duration-info .duration:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
+}
+
+.company-info {
+  flex: 1;
+}
+
+.company-info h3 {
+  color: var(--main-color);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--main-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.company-info h4 {
+  color: var(--text-color-dark);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0.3rem 0;
+}
+
+.company-link {
+  color: var(--main-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.company-link:hover {
+  color: var(--main-color-dark);
+  text-decoration: underline;
+}
+
+.company-link::after {
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.company-link:hover::after {
+  opacity: 1;
+}
+
+.duration {
+  color: var(--text-color-light);
+  font-size: 0.9rem;
+  font-weight: 500;
+  background: var(--main-color);
+  color: white;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.company-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: var(--bg-color-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.company-logo:hover {
+  border-color: var(--main-color);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-medium);
+  background: var(--bg-color-secondary);
+}
+
+.company-logo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+}
+
+.company-logo i {
+  font-size: 2.5rem;
+  color: var(--main-color);
+}
+
+.experience-content p {
+  color: var(--text-color);
+  font-size: 1rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.responsibilities h5,
+.tech-stack h5,
+.projects-worked h5 {
+  color: var(--text-color-dark);
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.responsibilities h5::before,
+.tech-stack h5::before,
+.projects-worked h5::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 20px;
+  background: linear-gradient(135deg, var(--main-color), var(--accent-color));
+  border-radius: 2px;
+}
+
+.responsibilities ul,
+.projects-worked ul {
+  list-style: none;
+  padding: 0;
+}
+
+.responsibilities li,
+.projects-worked li {
+  color: var(--text-color);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 0.8rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.responsibilities li::before,
+.projects-worked li::before {
+  content: "▸";
+  color: var(--main-color);
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.responsibilities strong {
+  /* color: var(--main-color); */
+  font-weight: 600;
+}
+
+.project-link {
+  color: var(--main-color);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  margin-left: 0.5rem;
+  /* padding: 0.3rem 0.8rem;
+  background: rgba(0, 123, 255, 0.1);
+  border-radius: 15px;
+  border: 1px solid rgba(0, 123, 255, 0.2); */
+}
+
+.project-link:hover {
+  color: var(--main-color-dark);
+  background: rgba(0, 123, 255, 0.15);
+  border-color: var(--main-color);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.tech-tag {
+  background: linear-gradient(135deg, var(--main-color), var(--accent-color));
+  color: white;
+  padding: 0.7rem 1.4rem;
+  border-radius: 25px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+}
+
+.tech-tag:hover {
+  background: linear-gradient(135deg, var(--accent-color), var(--main-color));
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.3);
+  border-color: var(--main-color);
+}
+
+/* Enhanced Visual Effects */
+.experience-item,
+.education-item {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.experience-item:nth-child(2),
+.education-item:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Education Section Styles */
+.education {
+  background: linear-gradient(135deg, var(--bg-color) 0%, var(--bg-color-secondary) 100%);
+  border-radius: var(--border-radius);
+  margin: 2rem 0;
+  box-shadow: var(--shadow-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.education-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.education-item {
+  background: linear-gradient(145deg, var(--bg-color-secondary) 0%, var(--bg-color) 100%);
+  border-radius: 20px;
+  padding: 3rem;
+  margin-bottom: 3rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+.education-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--accent-color);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.education-item:hover::before {
+  transform: scaleY(1);
+}
+
+.education-item:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+  border-color: var(--accent-color);
+}
+
+.education-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+  gap: 2rem;
+  position: relative;
+}
+
+.education-header::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent-color), var(--main-color));
+  border-radius: 1px;
+}
+
+.institution-info {
+  flex: 1;
+}
+
+.institution-info h3 {
+  color: var(--accent-color);
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--accent-color), var(--main-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.institution-info h4 {
+  color: var(--text-color-dark);
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0.3rem 0;
+}
+
+.institution-link {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.institution-link:hover {
+  color: var(--main-color);
+  text-decoration: underline;
+}
+
+.institution-link::after {
+  content: '↗';
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.institution-link:hover::after {
+  opacity: 1;
+}
+
+.education-duration {
+  background: linear-gradient(135deg, var(--accent-color), var(--main-color));
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  box-shadow: 0 4px 8px rgba(0, 123, 255, 0.2);
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  min-width: 200px;
+  text-align: center;
+}
+
+.education-duration:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 123, 255, 0.3);
+}
+
+.education-content {
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+.education-content p {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--text-color);
+}
+
+/* Responsive Design for Work Experience and Education */
+@media screen and (max-width: 768px) {
+  .experience-container,
+  .education-container {
+    padding: 0 1rem;
+  }
+  
+  .experience-item,
+  .education-item {
+    padding: 1.5rem;
+  }
+  
+  .education-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .education-duration {
+    min-width: auto;
+    width: 100%;
+  }
+  
+  .experience-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  
+  .company-info h3 {
+    font-size: 1.3rem;
+  }
+  
+  .company-info h4 {
+    font-size: 1.1rem;
+  }
+  
+  .company-logo i {
+    font-size: 2rem;
+  }
+  
+  .experience-content p {
+    font-size: 0.95rem;
+  }
+  
+  .responsibilities li {
+    font-size: 0.9rem;
+  }
+  
+  .tech-tags {
+    gap: 0.6rem;
+  }
+  
+  .tech-tag {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .experience-item {
+    padding: 1.2rem;
+  }
+  
+  .company-info h3 {
+    font-size: 1.2rem;
+  }
+  
+  .company-info h4 {
+    font-size: 1rem;
+  }
+  
+  .company-logo i {
+    font-size: 1.8rem;
+  }
+  
+  .experience-content p {
+    font-size: 0.9rem;
+  }
+  
+  .responsibilities li {
+    font-size: 0.85rem;
+    padding-left: 1.2rem;
+  }
+  
+  .tech-tags {
+    gap: 0.5rem;
+  }
+  
+  .tech-tag {
+    padding: 0.3rem 0.7rem;
+    font-size: 0.75rem;
+  }
+}

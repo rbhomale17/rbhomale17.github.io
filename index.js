@@ -20,15 +20,122 @@ window.addEventListener("scroll", () => {
   header.classList.toggle("shadow", window.scrollY > 0);
 });
 
-menu.onclick = () => {
-  navbar.classList.toggle("active");
-};
-window.onscroll = () => {
-  navbar.classList.remove("active");
-};
+// Fixed menu toggle functionality
+function initializeMenu() {
+  const menuIcon = document.querySelector("#menu-icon");
+  const navbar = document.querySelector(".navbar");
+  const menuItems = document.querySelectorAll(".navbar li");
+  
+  console.log('Initializing menu - Menu icon found:', !!menuIcon);
+  console.log('Initializing menu - Navbar found:', !!navbar);
+  console.log('Menu items found:', menuItems.length);
+  
+  // Function to check if we're in mobile/tablet view
+  function isMobileView() {
+    return window.innerWidth <= 850;
+  }
+  
+  // Function to handle menu closing
+  function closeMenu() {
+    navbar.classList.remove("active");
+    console.log('Menu closed');
+  }
+  
+  if (menuIcon && navbar) {
+    // Remove any existing onclick handlers
+    menuIcon.onclick = null;
+    
+    // Add proper event listener
+    menuIcon.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      
+      // Only toggle menu if we're in mobile/tablet view
+      if (isMobileView()) {
+        navbar.classList.toggle("active");
+        console.log('Menu clicked, navbar active:', navbar.classList.contains('active'));
+        
+        // Log menu items visibility
+        menuItems.forEach((item, index) => {
+          const isVisible = item.offsetParent !== null;
+          console.log(`Menu item ${index + 1}: ${item.textContent.trim()} - Visible: ${isVisible}`);
+        });
+      }
+    });
+    
+    // Add touch event listener for mobile devices
+    menuIcon.addEventListener('touchstart', function(e) {
+      e.preventDefault();
+      
+      // Only toggle menu if we're in mobile/tablet view
+      if (isMobileView()) {
+        navbar.classList.toggle("active");
+        console.log('Menu touched, navbar active:', navbar.classList.contains('active'));
+      }
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!menuIcon.contains(e.target) && !navbar.contains(e.target)) {
+        closeMenu();
+      }
+    });
+    
+    // Close menu on scroll
+    window.addEventListener('scroll', function() {
+      closeMenu();
+    });
+    
+    // Close menu on window resize
+    window.addEventListener('resize', function() {
+      // Close menu when resizing to desktop view (above 850px)
+      if (window.innerWidth > 850) {
+        closeMenu();
+        console.log('Window resized to desktop, menu closed');
+      }
+    });
+    
+    // Add click handlers to menu items to close menu
+    menuItems.forEach(item => {
+      const link = item.querySelector('a');
+      if (link) {
+        link.addEventListener('click', function() {
+          // Close menu on all screen sizes when a menu item is clicked
+          closeMenu();
+          console.log('Menu item clicked, menu closed');
+        });
+      }
+    });
+    
+    console.log('Menu event listeners added successfully');
+    return true;
+  } else {
+    console.error('Menu icon or navbar not found!');
+    return false;
+  }
+}
+
+// Try to initialize menu when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+  if (!initializeMenu()) {
+    // If elements aren't found, try again after a short delay
+    setTimeout(function() {
+      if (!initializeMenu()) {
+        console.error('Failed to initialize menu after retry');
+      }
+    }, 100);
+  }
+});
+
+// Also try on window load as a fallback
+window.addEventListener('load', function() {
+  if (!document.querySelector("#menu-icon")) {
+    initializeMenu();
+  }
+});
 
 document.getElementById('resume-button-1').addEventListener("click", () => {
-  window.open("https://drive.google.com/file/d/1UAj5f-fHiInGHRnJJjCvNHGGwzpm3RMo/view?usp=share_link", "_blank");
+  window.open("https://drive.google.com/file/d/1fHgwpbNQxfSzRI7R78RMnlkYXVfV87G6/view?usp=share_link", "_blank");
 });
 
 
