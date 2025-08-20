@@ -4192,17 +4192,6 @@ html {
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --bg-color: #1a1a1a;
-        --bg-color-secondary: #2d2d2d;
-        --text-color: #ffffff;
-        --text-color-light: #cccccc;
-        --text-color-dark: #ffffff;
-        --border-color: #404040;
-        --border-color-light: #333333;
-    }
-}
 
 /* Focus Styles for Better Accessibility */
 @media (any-hover: hover) {
