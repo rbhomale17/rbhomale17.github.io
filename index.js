@@ -26,10 +26,6 @@ function initializeMenu() {
   const navbar = document.querySelector(".navbar");
   const menuItems = document.querySelectorAll(".navbar li");
   
-  console.log('Initializing menu - Menu icon found:', !!menuIcon);
-  console.log('Initializing menu - Navbar found:', !!navbar);
-  console.log('Menu items found:', menuItems.length);
-  
   // Function to check if we're in mobile/tablet view
   function isMobileView() {
     return window.innerWidth <= 850;
@@ -38,7 +34,6 @@ function initializeMenu() {
   // Function to handle menu closing
   function closeMenu() {
     navbar.classList.remove("active");
-    console.log('Menu closed');
   }
   
   if (menuIcon && navbar) {
@@ -53,13 +48,6 @@ function initializeMenu() {
       // Only toggle menu if we're in mobile/tablet view
       if (isMobileView()) {
         navbar.classList.toggle("active");
-        console.log('Menu clicked, navbar active:', navbar.classList.contains('active'));
-        
-        // Log menu items visibility
-        menuItems.forEach((item, index) => {
-          const isVisible = item.offsetParent !== null;
-          console.log(`Menu item ${index + 1}: ${item.textContent.trim()} - Visible: ${isVisible}`);
-        });
       }
     });
     
@@ -70,7 +58,6 @@ function initializeMenu() {
       // Only toggle menu if we're in mobile/tablet view
       if (isMobileView()) {
         navbar.classList.toggle("active");
-        console.log('Menu touched, navbar active:', navbar.classList.contains('active'));
       }
     });
     
@@ -91,7 +78,6 @@ function initializeMenu() {
       // Close menu when resizing to desktop view (above 850px)
       if (window.innerWidth > 850) {
         closeMenu();
-        console.log('Window resized to desktop, menu closed');
       }
     });
     
@@ -100,17 +86,14 @@ function initializeMenu() {
       const link = item.querySelector('a');
       if (link) {
         link.addEventListener('click', function() {
-          // Close menu on all screen sizes when a menu item is clicked
-          closeMenu();
-          console.log('Menu item clicked, menu closed');
+                  // Close menu on all screen sizes when a menu item is clicked
+        closeMenu();
         });
       }
     });
     
-    console.log('Menu event listeners added successfully');
     return true;
   } else {
-    console.error('Menu icon or navbar not found!');
     return false;
   }
 }
@@ -120,9 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
   if (!initializeMenu()) {
     // If elements aren't found, try again after a short delay
     setTimeout(function() {
-      if (!initializeMenu()) {
-        console.error('Failed to initialize menu after retry');
-      }
+      initializeMenu();
     }, 100);
   }
 });
