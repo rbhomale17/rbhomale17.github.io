@@ -1,5 +1,10 @@
 <h1 align="center">Welcome to my Portfolio Repository!</h1>
 
+<h1 align="center">
+  <a href="https://rbhomale17.github.io">Click Here to View Portfolio</a>
+</h1>
+
+
 <br>
 
 Thank you for visiting!
