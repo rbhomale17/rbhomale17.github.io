@@ -6,11 +6,28 @@ function setCurrentYear() {
   }
 }
 
+// Calculate years of experience from first job start date (Jan 2024)
+function setYearsOfExperience() {
+  const el = document.getElementById('about-intro-text');
+  if (!el) return;
+  const start = new Date('2024-01-01');
+  const now = new Date();
+  const totalMonths = (now.getFullYear() - start.getFullYear()) * 12 + (now.getMonth() - start.getMonth());
+  const years = Math.floor(totalMonths / 12);
+  const months = totalMonths % 12;
+  const exp = `${years}.${months}`;
+  el.textContent = el.textContent.replace('2+', exp);
+}
+
 // Try to set year immediately
 setCurrentYear();
+setYearsOfExperience();
 
 // Also set it when DOM is loaded
-document.addEventListener('DOMContentLoaded', setCurrentYear);
+document.addEventListener('DOMContentLoaded', () => {
+  setCurrentYear();
+  setYearsOfExperience();
+});
 
 let header = document.querySelector("header");
 let menu = document.querySelector("#menu-icon");
